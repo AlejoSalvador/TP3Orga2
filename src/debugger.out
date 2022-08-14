@@ -1,0 +1,114 @@
+Next at t=0
+(0) [0x0000fffffff0] f000:fff0 (no symbol): jmp far f000:e05b         ; ea5be000f0
+# Saltar breakpoint de la bios
+continue
+(0) Magic breakpoint
+Next at t=33682456
+(0) [0x000000001290] 0008:00001290 (modoprotegido+3): xor eax, eax              ; 31c0
+info gdt
+Global Descriptor Table (base=0x00002940, limit=327):
+GDT[0x00]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x01]=Code segment, base=0x00000000, limit=0x6fffffff, Execute/Read, Non-Conforming, Accessed, 32-bit
+GDT[0x02]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x03]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x04]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x05]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x06]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x07]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x08]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x09]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x0a]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x0b]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x0c]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x0d]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x0e]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x0f]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x10]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x11]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x12]=Code segment, base=0x00000000, limit=0x6fffffff, Execute/Read, Non-Conforming, 32-bit
+GDT[0x13]=Code segment, base=0x00000000, limit=0x6fffffff, Execute/Read, Non-Conforming, 32-bit
+GDT[0x14]=Data segment, base=0x00000000, limit=0x6fffffff, Read/Write
+GDT[0x15]=Data segment, base=0x00000000, limit=0x6fffffff, Read/Write
+GDT[0x16]=Data segment, base=0x000b8000, limit=0x00000f9f, Read/Write
+GDT[0x17]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x18]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x19]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x1a]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x1b]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x1c]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x1d]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x1e]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x1f]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x20]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x21]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x22]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x23]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x24]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x25]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x26]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x27]=??? descriptor hi=0x00000000, lo=0x00000000
+GDT[0x28]=??? descriptor hi=0x00000000, lo=0x00000000
+You can list individual entries with 'info gdt [NUM]' or groups with 'info gdt [NUM] [NUM]'
+n
+Next at t=33682457
+(0) [0x000000001292] 0008:00001292 (modoprotegido+5): mov ax, 0x00a0            ; 66b8a000
+n
+Next at t=33682458
+(0) [0x000000001296] 0008:00001296 (modoprotegido+9): mov ds, ax                ; 8ed8
+n
+Next at t=33682459
+(0) [0x000000001298] 0008:00001298 (modoprotegido+b): mov es, ax                ; 8ec0
+n
+Next at t=33682460
+(0) [0x00000000129a] 0008:0000129a (modoprotegido+d): mov gs, ax                ; 8ee8
+n
+Next at t=33682461
+(0) [0x00000000129c] 0008:0000129c (modoprotegido+f): mov ss, ax                ; 8ed0
+n
+Next at t=33682462
+(0) [0x00000000129e] 0008:0000129e (modoprotegido+11): mov ax, 0x00b0            ; 66b8b000
+n
+Next at t=33682463
+(0) [0x0000000012a2] 0008:000012a2 (modoprotegido+15): mov fs, ax                ; 8ee0
+info desc
+bochsdbg:9: syntax error at 'desc'
+segsel
+bochsdbg:10: syntax error at 'segsel'
+info seg
+bochsdbg:11: syntax error at 'seg'
+help
+h|help - show list of debugger commands
+h|help command - show short command description
+-*- Debugger control -*-
+    help, q|quit|exit, set, instrument, show, trace, trace-reg,
+    trace-mem, u|disasm, ldsym, slist
+-*- Execution control -*-
+    c|cont|continue, s|step, p|n|next, modebp, vmexitbp
+-*- Breakpoint management -*-
+    vb|vbreak, lb|lbreak, pb|pbreak|b|break, sb, sba, blist,
+    bpe, bpd, d|del|delete, watch, unwatch
+-*- CPU and memory contents -*-
+    x, xp, setpmem, writemem, crc, info,
+    r|reg|regs|registers, fp|fpu, mmx, sse, sreg, dreg, creg,
+    page, set, ptime, print-stack, ?|calc
+-*- Working with bochs param tree -*-
+    show "param", restore
+sreg
+es:0x00a0, dh=0x00c69300, dl=0x0000ffff, valid=1
+	Data segment, base=0x00000000, limit=0x6fffffff, Read/Write, Accessed
+cs:0x0008, dh=0x00c69b00, dl=0x0000ffff, valid=1
+	Code segment, base=0x00000000, limit=0x6fffffff, Execute/Read, Non-Conforming, Accessed, 32-bit
+ss:0x00a0, dh=0x00c69300, dl=0x0000ffff, valid=1
+	Data segment, base=0x00000000, limit=0x6fffffff, Read/Write, Accessed
+ds:0x00a0, dh=0x00c69300, dl=0x0000ffff, valid=1
+	Data segment, base=0x00000000, limit=0x6fffffff, Read/Write, Accessed
+fs:0x0000, dh=0x00009300, dl=0x0000ffff, valid=1
+	Data segment, base=0x00000000, limit=0x0000ffff, Read/Write, Accessed
+gs:0x00a0, dh=0x00c69300, dl=0x0000ffff, valid=1
+	Data segment, base=0x00000000, limit=0x6fffffff, Read/Write, Accessed
+ldtr:0x0000, dh=0x00008200, dl=0x0000ffff, valid=1
+tr:0x0000, dh=0x00008b00, dl=0x0000ffff, valid=1
+gdtr:base=0x00002940, limit=0x147
+idtr:base=0x00000000, limit=0x3ff
+q
+(0).[33682463] [0x0000000012a2] 0008:000012a2 (modoprotegido+15): mov fs, ax                ; 8ee0
